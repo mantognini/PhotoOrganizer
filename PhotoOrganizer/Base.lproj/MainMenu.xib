@@ -670,22 +670,10 @@
                             <action selector="browse:" target="494" id="SsC-ns-9nB"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Ya-03-FBW">
-                        <rect key="frame" x="20" y="321" width="365" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="truncatingHead" sendsActionOnEndEditing="YES" title="Image Path" id="ZyR-Cm-6F1">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="494" name="value" keyPath="self.imageUrl.relativePath" id="pU5-gT-nZP"/>
-                        </connections>
-                    </textField>
-                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i90-YE-I2L">
+                    <scrollView ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i90-YE-I2L">
                         <rect key="frame" x="20" y="20" width="440" height="293"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" id="sKZ-Kq-XaQ">
+                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="sKZ-Kq-XaQ">
                             <rect key="frame" x="1" y="17" width="438" height="275"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -712,7 +700,7 @@
                                                 <binding destination="eHX-TS-wop" name="value" keyPath="arrangedObjects.name" id="Ot9-Cw-GmN"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn editable="NO" width="228.5" minWidth="40" maxWidth="1000" id="cIF-75-3mo">
+                                        <tableColumn editable="NO" width="228" minWidth="40" maxWidth="1000" id="cIF-75-3mo">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -734,12 +722,12 @@
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" id="L8S-s3-z8U">
-                            <rect key="frame" x="1" y="276" width="438" height="16"/>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="L8S-s3-z8U">
+                            <rect key="frame" x="-100" y="-100" width="438" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" id="smz-ZQ-TwC">
-                            <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" id="smz-ZQ-TwC">
+                            <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="9p0-Ay-jwO">
@@ -752,10 +740,6 @@
                     <constraint firstAttribute="trailing" secondItem="sR7-oI-e6F" secondAttribute="trailing" constant="20" symbolic="YES" id="CuZ-XE-piF"/>
                     <constraint firstItem="i90-YE-I2L" firstAttribute="trailing" secondItem="sR7-oI-e6F" secondAttribute="trailing" id="R8a-yp-Wvn"/>
                     <constraint firstItem="i90-YE-I2L" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" symbolic="YES" id="UXK-O0-66M"/>
-                    <constraint firstItem="5Ya-03-FBW" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="23" id="djx-Sf-1Oy"/>
-                    <constraint firstItem="5Ya-03-FBW" firstAttribute="centerY" secondItem="sR7-oI-e6F" secondAttribute="centerY" id="dpL-pX-tN5"/>
-                    <constraint firstItem="sR7-oI-e6F" firstAttribute="leading" secondItem="5Ya-03-FBW" secondAttribute="trailing" constant="5" id="e7A-P2-5aH"/>
-                    <constraint firstItem="i90-YE-I2L" firstAttribute="top" secondItem="5Ya-03-FBW" secondAttribute="bottom" constant="8" symbolic="YES" id="kG8-0t-epd"/>
                     <constraint firstAttribute="bottom" secondItem="i90-YE-I2L" secondAttribute="bottom" constant="20" symbolic="YES" id="olU-nD-q3R"/>
                     <constraint firstItem="sR7-oI-e6F" firstAttribute="top" secondItem="372" secondAttribute="top" constant="20" symbolic="YES" id="tPZ-oC-Df5"/>
                 </constraints>

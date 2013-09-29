@@ -18,24 +18,22 @@
 
 - (IBAction)browse:(id)sender
 {
-    self.imageUrl = [NSURL URLWithString:@"Browsing"];
-
     // Open a browser panel
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     [panel setFloatingPanel:YES];
     [panel setCanChooseDirectories:NO];
     [panel setCanChooseFiles:YES];
-    [panel setAllowsMultipleSelection:NO];
-    [panel setTitle:@"Select an Image"];
+    [panel setAllowsMultipleSelection:YES];
+    [panel setTitle:@"Select some Images"];
     [panel setAllowedFileTypes:@[(__bridge NSString *)kUTTypeImage]];
 
     // Browse
 	NSInteger i = [panel runModal];
 	if (i == NSOKButton) {
-		self.imageUrl = [[panel URLs] lastObject];
+		self.imageUrls = [panel URLs];
         [self loadProperties];
     } else {
-        self.imageUrl = [NSURL URLWithString:@"No image"];
+        self.imageUrls = [NSArray array];
         [self clearProperties];
     }
 }
@@ -46,11 +44,12 @@
 
     NSFileManager *fs = [NSFileManager defaultManager];
     NSError *error = nil;
-    NSDictionary *props = [fs attributesOfItemAtPath:self.imageUrl.relativePath error:&error];
+    NSURL *url = [self.imageUrls objectAtIndex:0];
+    NSDictionary *props = [fs attributesOfItemAtPath:url.relativePath error:&error];
     if (error) return [self reportError:error];
     else [self displayProperties:props];
 
-    CGImageSourceRef source = CGImageSourceCreateWithURL((__bridge CFURLRef)self.imageUrl, NULL);
+    CGImageSourceRef source = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
     if (source) {
         NSDictionary* props = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(source, 0, NULL));
         [self displayProperties:props];
