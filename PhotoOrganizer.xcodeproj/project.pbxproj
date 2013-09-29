@@ -18,6 +18,7 @@
 		0C3400F217F81FCC002BC8BD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3400D117F81FCC002BC8BD /* Cocoa.framework */; };
 		0C3400FA17F81FCC002BC8BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C3400F817F81FCC002BC8BD /* InfoPlist.strings */; };
 		0C3400FC17F81FCC002BC8BD /* PhotoOrganizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3400FB17F81FCC002BC8BD /* PhotoOrganizerTests.m */; };
+		0C34010717F82A7C002BC8BD /* NSArrayController+PO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		0C3400F717F81FCC002BC8BD /* PhotoOrganizerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhotoOrganizerTests-Info.plist"; sourceTree = "<group>"; };
 		0C3400F917F81FCC002BC8BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0C3400FB17F81FCC002BC8BD /* PhotoOrganizerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoOrganizerTests.m; sourceTree = "<group>"; };
+		0C34010517F82A7C002BC8BD /* NSArrayController+PO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArrayController+PO.h"; sourceTree = "<group>"; };
+		0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArrayController+PO.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				0C3400E617F81FCC002BC8BD /* MainMenu.xib */,
 				0C3400E917F81FCC002BC8BD /* Images.xcassets */,
 				0C3400D817F81FCC002BC8BD /* Supporting Files */,
+				0C34010517F82A7C002BC8BD /* NSArrayController+PO.h */,
+				0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */,
 			);
 			path = PhotoOrganizer;
 			sourceTree = "<group>";
@@ -202,6 +207,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = local;
 				TargetAttributes = {
+					0C3400CD17F81FCC002BC8BD = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
 					0C3400EE17F81FCC002BC8BD = {
 						TestTargetID = 0C3400CD17F81FCC002BC8BD;
 					};
@@ -254,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C3400DE17F81FCC002BC8BD /* main.m in Sources */,
+				0C34010717F82A7C002BC8BD /* NSArrayController+PO.m in Sources */,
 				0C3400E517F81FCC002BC8BD /* POAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +397,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoOrganizer/PhotoOrganizer-Prefix.pch";
@@ -397,6 +411,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoOrganizer/PhotoOrganizer-Prefix.pch";
