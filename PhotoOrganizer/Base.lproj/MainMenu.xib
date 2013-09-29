@@ -733,7 +733,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-66-2Tq">
-                        <rect key="frame" x="208" y="312" width="65" height="32"/>
+                        <rect key="frame" x="172" y="312" width="65" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Info" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cE0-94-S0c">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -743,15 +743,28 @@
                             <action selector="info:" target="494" id="FyN-c5-2uW"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tyb-1y-6Ls">
+                        <rect key="frame" x="237" y="312" width="76" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Props" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O9y-Vq-p4P">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="props:" target="494" id="Qzr-t5-E9I"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="UJe-va-nX3" firstAttribute="trailing" secondItem="sR7-oI-e6F" secondAttribute="trailing" id="0E0-rY-WHu"/>
-                    <constraint firstItem="oOY-66-2Tq" firstAttribute="centerX" secondItem="UJe-va-nX3" secondAttribute="centerX" id="1lq-3g-0Ip"/>
+                    <constraint firstItem="oOY-66-2Tq" firstAttribute="centerX" secondItem="UJe-va-nX3" secondAttribute="centerX" constant="-35.5" id="1lq-3g-0Ip"/>
                     <constraint firstItem="oOY-66-2Tq" firstAttribute="baseline" secondItem="sR7-oI-e6F" secondAttribute="baseline" id="24L-uc-Kar"/>
                     <constraint firstAttribute="trailing" secondItem="sR7-oI-e6F" secondAttribute="trailing" constant="20" symbolic="YES" id="CuZ-XE-piF"/>
                     <constraint firstAttribute="bottom" secondItem="UJe-va-nX3" secondAttribute="bottom" constant="20" symbolic="YES" id="KA9-hg-Dox"/>
+                    <constraint firstItem="Tyb-1y-6Ls" firstAttribute="baseline" secondItem="oOY-66-2Tq" secondAttribute="baseline" id="Lcx-ln-RUd"/>
                     <constraint firstItem="UJe-va-nX3" firstAttribute="top" secondItem="zze-Vo-OdW" secondAttribute="bottom" constant="20" symbolic="YES" id="T5Q-mA-gjc"/>
                     <constraint firstItem="zze-Vo-OdW" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" symbolic="YES" id="UDZ-XL-5I0"/>
+                    <constraint firstItem="Tyb-1y-6Ls" firstAttribute="leading" secondItem="oOY-66-2Tq" secondAttribute="trailing" constant="12" symbolic="YES" id="egq-NF-dtB"/>
                     <constraint firstItem="oOY-66-2Tq" firstAttribute="baseline" secondItem="zze-Vo-OdW" secondAttribute="baseline" id="fQm-vE-Bz1"/>
                     <constraint firstItem="UJe-va-nX3" firstAttribute="leading" secondItem="zze-Vo-OdW" secondAttribute="leading" id="s51-Le-WG0"/>
                     <constraint firstItem="sR7-oI-e6F" firstAttribute="top" secondItem="372" secondAttribute="top" constant="20" symbolic="YES" id="tPZ-oC-Df5"/>
@@ -761,7 +774,7 @@
         <customObject id="494" customClass="POAppDelegate">
             <connections>
                 <outlet property="commonProps" destination="xpQ-aM-RvP" id="hN1-8g-fsq"/>
-                <outlet property="commonPropsWindow" destination="86Q-Ej-3Rg" id="hXP-iI-PeA"/>
+                <outlet property="commonPropsPanel" destination="86Q-Ej-3Rg" id="0bs-vl-zS3"/>
                 <outlet property="currentImageData" destination="WNz-OI-ZUR" id="zjg-Ni-Z0G"/>
                 <outlet property="imagePaths" destination="25b-sA-Bdf" id="FhA-fe-o6o"/>
                 <outlet property="imagesData" destination="25b-sA-Bdf" id="M5I-DH-rub"/>
@@ -776,7 +789,7 @@
                 <string>name</string>
             </declaredKeys>
         </arrayController>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="EeT-5l-KTZ" customClass="NSPanel">
+        <window title="Info" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="EeT-5l-KTZ" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="167" y="107" width="618" height="333"/>
@@ -868,8 +881,8 @@
         </window>
         <arrayController id="WNz-OI-ZUR" userLabel="SelectedImageProps"/>
         <arrayController id="xpQ-aM-RvP" userLabel="CommonProps"/>
-        <window title="Common Props" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="86Q-Ej-3Rg">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Common Props" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="86Q-Ej-3Rg" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="163" y="199" width="480" height="270"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>

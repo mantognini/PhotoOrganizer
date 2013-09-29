@@ -54,9 +54,19 @@
 
 - (IBAction)info:(id)sender
 {
-    // Toggle info window visibility
-    if ([self.infoPanel isVisible]) [self.infoPanel orderOut:self];
-    else [self.infoPanel orderFront:self];
+    [self toggle:self.infoPanel];
+}
+
+- (IBAction)props:(id)sender
+{
+    [self toggle:self.commonPropsPanel];
+}
+
+- (void)toggle:(NSWindow *)window
+{
+    // Toggle window visibility
+    if ([window isVisible]) [window orderOut:self];
+    else [window orderFront:self];
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
