@@ -670,10 +670,10 @@
                             <action selector="browse:" target="494" id="SsC-ns-9nB"/>
                         </connections>
                     </button>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJe-va-nX3">
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJe-va-nX3">
                         <rect key="frame" x="20" y="20" width="440" height="279"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="BaF-iG-jZl">
+                        <clipView key="contentView" id="BaF-iG-jZl">
                             <rect key="frame" x="1" y="17" width="438" height="261"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -721,7 +721,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zze-Vo-OdW">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zze-Vo-OdW">
                         <rect key="frame" x="14" y="312" width="73" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ogj-jc-PzS">
@@ -732,7 +732,7 @@
                             <action selector="clear:" target="494" id="446-57-mNz"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-66-2Tq">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-66-2Tq">
                         <rect key="frame" x="208" y="312" width="65" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Info" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cE0-94-S0c">
@@ -745,7 +745,15 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="UJe-va-nX3" firstAttribute="trailing" secondItem="sR7-oI-e6F" secondAttribute="trailing" id="0E0-rY-WHu"/>
+                    <constraint firstItem="oOY-66-2Tq" firstAttribute="centerX" secondItem="UJe-va-nX3" secondAttribute="centerX" id="1lq-3g-0Ip"/>
+                    <constraint firstItem="oOY-66-2Tq" firstAttribute="baseline" secondItem="sR7-oI-e6F" secondAttribute="baseline" id="24L-uc-Kar"/>
                     <constraint firstAttribute="trailing" secondItem="sR7-oI-e6F" secondAttribute="trailing" constant="20" symbolic="YES" id="CuZ-XE-piF"/>
+                    <constraint firstAttribute="bottom" secondItem="UJe-va-nX3" secondAttribute="bottom" constant="20" symbolic="YES" id="KA9-hg-Dox"/>
+                    <constraint firstItem="UJe-va-nX3" firstAttribute="top" secondItem="zze-Vo-OdW" secondAttribute="bottom" constant="20" symbolic="YES" id="T5Q-mA-gjc"/>
+                    <constraint firstItem="zze-Vo-OdW" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" symbolic="YES" id="UDZ-XL-5I0"/>
+                    <constraint firstItem="oOY-66-2Tq" firstAttribute="baseline" secondItem="zze-Vo-OdW" secondAttribute="baseline" id="fQm-vE-Bz1"/>
+                    <constraint firstItem="UJe-va-nX3" firstAttribute="leading" secondItem="zze-Vo-OdW" secondAttribute="leading" id="s51-Le-WG0"/>
                     <constraint firstItem="sR7-oI-e6F" firstAttribute="top" secondItem="372" secondAttribute="top" constant="20" symbolic="YES" id="tPZ-oC-Df5"/>
                 </constraints>
             </view>
@@ -775,10 +783,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="618" height="333"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i90-YE-I2L">
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i90-YE-I2L">
                         <rect key="frame" x="20" y="20" width="578" height="293"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="sKZ-Kq-XaQ">
+                        <clipView key="contentView" id="sKZ-Kq-XaQ">
                             <rect key="frame" x="1" y="17" width="576" height="275"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -848,6 +856,12 @@
                         </tableHeaderView>
                     </scrollView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="i90-YE-I2L" secondAttribute="bottom" constant="20" symbolic="YES" id="9c4-Qd-njB"/>
+                    <constraint firstItem="i90-YE-I2L" firstAttribute="leading" secondItem="vCV-Ih-C1y" secondAttribute="leading" constant="20" symbolic="YES" id="Ptg-m8-bhZ"/>
+                    <constraint firstAttribute="trailing" secondItem="i90-YE-I2L" secondAttribute="trailing" constant="20" symbolic="YES" id="eUC-nu-vCH"/>
+                    <constraint firstItem="i90-YE-I2L" firstAttribute="top" secondItem="vCV-Ih-C1y" secondAttribute="top" constant="20" symbolic="YES" id="iip-4h-te4"/>
+                </constraints>
             </view>
         </window>
         <arrayController id="WNz-OI-ZUR" userLabel="SelectedImageProps"/>
