@@ -679,7 +679,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <binding destination="494" name="value" keyPath="self.imagePath" id="WTc-4d-3H5"/>
+                            <binding destination="494" name="value" keyPath="self.imageUrl.relativePath" id="pU5-gT-nZP"/>
                         </connections>
                     </textField>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i90-YE-I2L">
@@ -690,13 +690,13 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="9p0-Ay-jwO" id="4hB-Uz-TsH">
-                                    <rect key="frame" x="0.0" y="0.0" width="438" height="275"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="438.5" height="275"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="204.08984375" minWidth="40" maxWidth="1000" id="dsj-JY-zig">
+                                        <tableColumn editable="NO" width="204.08984375" minWidth="40" maxWidth="1000" id="dsj-JY-zig">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Property">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -712,17 +712,18 @@
                                                 <binding destination="eHX-TS-wop" name="value" keyPath="arrangedObjects.name" id="Ot9-Cw-GmN"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="228.5" minWidth="40" maxWidth="1000" id="cIF-75-3mo">
+                                        <tableColumn editable="NO" width="228.5" minWidth="40" maxWidth="1000" id="cIF-75-3mo">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="ZvY-df-70A">
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" usesSingleLineMode="YES" id="ZvY-df-70A">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="value"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
                                                 <binding destination="eHX-TS-wop" name="value" keyPath="arrangedObjects.value" id="tPG-nA-rZB"/>
@@ -742,7 +743,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="9p0-Ay-jwO">
-                            <rect key="frame" x="0.0" y="0.0" width="438" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="438.5" height="17"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
@@ -767,7 +768,7 @@
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
-        <arrayController id="eHX-TS-wop" userLabel="ImageProperties">
+        <arrayController automaticallyRearrangesObjects="YES" id="eHX-TS-wop" userLabel="ImageProperties">
             <declaredKeys>
                 <string>name</string>
                 <string>value</string>

@@ -18,7 +18,7 @@
 
 - (IBAction)browse:(id)sender
 {
-    self.imagePath = @"Browsing";
+    self.imageUrl = [NSURL URLWithString:@"Browsing"];
 
     // Open a browser panel
     NSOpenPanel *panel = [NSOpenPanel openPanel];
@@ -32,11 +32,10 @@
     // Browse
 	NSInteger i = [panel runModal];
 	if (i == NSOKButton) {
-        NSURL *url = [[panel URLs] lastObject];
-		self.imagePath = [url relativePath];
+		self.imageUrl = [[panel URLs] lastObject];
         [self loadProperties];
     } else {
-        self.imagePath = @"No image";
+        self.imageUrl = [NSURL URLWithString:@"No image"];
         [self clearProperties];
     }
 }
@@ -45,8 +44,7 @@
 {
     NSFileManager *fs = [NSFileManager defaultManager];
     NSError *error = nil;
-    NSDictionary *props = [fs attributesOfItemAtPath:self.imagePath
-                                               error:&error];
+    NSDictionary *props = [fs attributesOfItemAtPath:self.imageUrl.relativePath error:&error];
     if (error) [self report:error];
     else [self displayProperties:props];
 }
@@ -55,7 +53,8 @@
 {
     [self clearProperties];
     [props enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [self addPropertyWithName:key andValue:obj];
+        // Make sure to pass NSString!
+        [self addPropertyWithName:[key description] andValue:[obj description]];
     }];
 }
 
@@ -74,6 +73,8 @@
 
 - (void)addPropertyWithName:(NSString *)name andValue:(NSString *)value
 {
+    // Remove new lines (crash when sorting)
+    value = [value stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     [self.imageProperties addObject:@{@"name": name, @"value": value}];
 }
 

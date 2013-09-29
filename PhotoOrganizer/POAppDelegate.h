@@ -11,7 +11,7 @@
 @interface POAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
-@property (strong) NSString *imagePath;
+@property (strong) NSURL *imageUrl;
 @property (weak) IBOutlet NSArrayController *imageProperties;
 
 @end
