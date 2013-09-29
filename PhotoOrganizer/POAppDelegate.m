@@ -17,6 +17,7 @@
     if (self) {
         // Init own (strong) attributes
         self.urls = [NSMutableArray array];
+        self.commonPropsSet = nil; // yup!
     }
     return self;
 }
@@ -47,6 +48,8 @@
     [self.imagesData removeAllObjects];
     [self.currentImageData removeAllObjects];
     [self.urls removeAllObjects];
+    self.commonPropsSet = nil; // yup!
+    [self.commonProps removeAllObjects];
 }
 
 - (IBAction)info:(id)sender
@@ -98,7 +101,24 @@
             [self addProperties:cgprops to:props];
             CFRelease(source);
         } else [self reportErrorMessage:@"Cannot open CFImageSource" to:props];
+
+        // ...update common props set
+        NSMutableSet *propsSet = [NSMutableSet set];
+        [props enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSDictionary *dict = obj;
+            NSString *propName = [dict objectForKey:@"name"];
+            [propsSet addObject:propName];
+        }];
+        if (self.commonPropsSet == nil) {
+            self.commonPropsSet = propsSet;
+        } else {
+            [self.commonPropsSet intersectSet:propsSet];
+        }
     }];
+
+    // And update Common Props Window
+    [self.commonProps removeAllObjects];
+    [self.commonProps addObjects:[self.commonPropsSet allObjects]];
 }
 
 - (void)addProperties:(NSDictionary *)inprops to:(NSMutableArray *)props

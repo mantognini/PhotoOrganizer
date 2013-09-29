@@ -760,6 +760,8 @@
         </window>
         <customObject id="494" customClass="POAppDelegate">
             <connections>
+                <outlet property="commonProps" destination="xpQ-aM-RvP" id="hN1-8g-fsq"/>
+                <outlet property="commonPropsWindow" destination="86Q-Ej-3Rg" id="hXP-iI-PeA"/>
                 <outlet property="currentImageData" destination="WNz-OI-ZUR" id="zjg-Ni-Z0G"/>
                 <outlet property="imagePaths" destination="25b-sA-Bdf" id="FhA-fe-o6o"/>
                 <outlet property="imagesData" destination="25b-sA-Bdf" id="M5I-DH-rub"/>
@@ -865,5 +867,72 @@
             </view>
         </window>
         <arrayController id="WNz-OI-ZUR" userLabel="SelectedImageProps"/>
+        <arrayController id="xpQ-aM-RvP" userLabel="CommonProps"/>
+        <window title="Common Props" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="86Q-Ej-3Rg">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="163" y="199" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <view key="contentView" id="Vw0-aI-EZO">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhR-g4-r3a">
+                        <rect key="frame" x="20" y="23" width="440" height="227"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" id="ALO-x6-3eg">
+                            <rect key="frame" x="1" y="17" width="438" height="209"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="KL1-VY-bFx" id="c13-8g-BPu">
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="209"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn width="435" minWidth="40" maxWidth="1000" id="fqF-hl-XX4">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Property">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="7Fa-0x-Oka">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="xpQ-aM-RvP" name="value" keyPath="arrangedObjects" id="vAW-S3-UY8"/>
+                                            </connections>
+                                        </tableColumn>
+                                    </tableColumns>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="bzk-gm-0Z6">
+                            <rect key="frame" x="1" y="1" width="0.0" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" id="e4m-aL-Edl">
+                            <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <tableHeaderView key="headerView" id="KL1-VY-bFx">
+                            <rect key="frame" x="0.0" y="0.0" width="438" height="17"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </tableHeaderView>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="VhR-g4-r3a" firstAttribute="leading" secondItem="Vw0-aI-EZO" secondAttribute="leading" constant="20" symbolic="YES" id="4NE-dD-N40"/>
+                    <constraint firstItem="VhR-g4-r3a" firstAttribute="top" secondItem="Vw0-aI-EZO" secondAttribute="top" constant="20" symbolic="YES" id="WTa-1Y-bTK"/>
+                    <constraint firstAttribute="trailing" secondItem="VhR-g4-r3a" secondAttribute="trailing" constant="20" symbolic="YES" id="s83-Sk-vAC"/>
+                    <constraint firstAttribute="bottom" secondItem="VhR-g4-r3a" secondAttribute="bottom" constant="23" id="tAT-hs-PAc"/>
+                </constraints>
+            </view>
+        </window>
     </objects>
 </document>
