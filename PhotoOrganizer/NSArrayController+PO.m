@@ -10,7 +10,7 @@
 
 @implementation NSArrayController (PO)
 
-- (void)removeAll
+- (void)removeAllObjects
 {
     NSRange range = NSMakeRange(0, [[self arrangedObjects] count]);
     [self removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];

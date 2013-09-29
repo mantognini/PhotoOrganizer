@@ -30,71 +30,97 @@
     // Browse
 	NSInteger i = [panel runModal];
 	if (i == NSOKButton) {
-		self.imageUrls = [panel URLs];
-        [self loadProperties];
-    } else {
-        self.imageUrls = [NSArray array];
-        [self clearProperties];
+        [self loadPropertiesForUrls:[panel URLs]];
+        [self updateInfo];
     }
 }
 
-- (void)loadProperties
+- (IBAction)clear:(id)sender
 {
-    [self clearProperties];
+    [self.imagesData removeAllObjects];
+    [self.urls removeAllObjects];
+}
+
+- (IBAction)info:(id)sender
+{
+    if ([self.infoPanel isVisible]) [self.infoPanel orderOut:self];
+    else [self.infoPanel orderFront:self];
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification
+{
+    [self updateInfo];
+}
+
+- (void)updateInfo
+{
+    [self.currentImageData removeAllObjects];
+    NSDictionary *selection = [self.imagesData.selectedObjects lastObject];
+    [self.currentImageData addObjects:[selection objectForKey:@"props"]];
+    [self.currentImageData setSelectedObjects:nil];
+}
+
+- (void)loadPropertiesForUrls:(NSArray *)urls
+{
+    if (nil == self.urls) self.urls = [NSMutableArray array];
 
     NSFileManager *fs = [NSFileManager defaultManager];
-    NSError *error = nil;
-    NSURL *url = [self.imageUrls objectAtIndex:0];
-    NSDictionary *props = [fs attributesOfItemAtPath:url.relativePath error:&error];
-    if (error) return [self reportError:error];
-    else [self displayProperties:props];
+    [urls enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSURL *url = obj;
 
-    CGImageSourceRef source = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
-    if (source) {
-        NSDictionary* props = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(source, 0, NULL));
-        [self displayProperties:props];
-        CFRelease(source);
-    } else return [self reportErrorMessage:@"Cannot open CFImageSource"];
-}
+        if ([self.urls containsObject:url]) return;
+        [self.urls addObject:url];
 
-- (void)displayProperties:(NSDictionary *)props
-{
-    [props enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if ([obj isKindOfClass:[NSDictionary class]]) [self displayProperties:obj withPrefixName:[key description]];
-        else [self addPropertyWithName:[key description] andValue:[obj description]]; // Make sure to pass NSString!
+        NSMutableArray *props = [NSMutableArray array];
+        [self.imagesData addObject:@{@"url": url, @"props": props}];
+
+        NSError *error = nil;
+        NSDictionary *fsprops = [fs attributesOfItemAtPath:url.relativePath error:&error];
+        if (error) [self reportError:error to:props];
+        else [self addProperties:fsprops to:props];
+
+        CGImageSourceRef source = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
+        if (source) {
+            NSDictionary* cgprops = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(source, 0, NULL));
+            [self addProperties:cgprops to:props];
+            CFRelease(source);
+        } else [self reportErrorMessage:@"Cannot open CFImageSource" to:props];
     }];
 }
 
-- (void)displayProperties:(NSDictionary *)props withPrefixName:(NSString *)prefix
+- (void)addProperties:(NSDictionary *)inprops to:(NSMutableArray *)props
 {
-    [props enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if ([obj isKindOfClass:[NSDictionary class]]) [self displayProperties:obj withPrefixName:[NSString stringWithFormat:@"%@.%@", prefix, key]];
-        else [self addPropertyWithName:[NSString stringWithFormat:@"%@.%@", prefix, key] andValue:[obj description]]; // Make sure to pass NSString!
+    [inprops enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([obj isKindOfClass:[NSDictionary class]]) [self addProperties:obj withPrefixName:[key description] to:props];
+        else [self addPropertyWithName:[key description] andValue:[obj description] to:props]; // Make sure to pass NSString!
     }];
 }
 
-- (void)reportErrorMessage:(NSString *)error
+- (void)addProperties:(NSDictionary *)inprops withPrefixName:(NSString *)prefix to:(NSMutableArray *)props
 {
-    [self addPropertyWithName:@"Error" andValue:error];
+    [inprops enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([obj isKindOfClass:[NSDictionary class]]) [self addProperties:obj withPrefixName:[NSString stringWithFormat:@"%@.%@", prefix, key] to:props];
+        else [self addPropertyWithName:[NSString stringWithFormat:@"%@.%@", prefix, key] andValue:[obj description] to:props]; // Make sure to pass NSString!
+    }];
 }
 
-- (void)reportError:(NSError *)error
+- (void)reportErrorMessage:(NSString *)error to:(NSMutableArray *)props
 {
-    [self addPropertyWithName:@"Error" andValue:[[NSNumber numberWithInteger:[error code]] stringValue]];
-    [self addPropertyWithName:@"Error" andValue:[error domain]];
-    [self addPropertyWithName:@"Error" andValue:[error localizedDescription]];
+    [self addPropertyWithName:@"Error" andValue:error to:props];
 }
 
-- (void)clearProperties
+- (void)reportError:(NSError *)error to:(NSMutableArray *)props
 {
-    [self.imageProperties removeAll];
+    [self addPropertyWithName:@"Error" andValue:[[NSNumber numberWithInteger:[error code]] stringValue] to:props];
+    [self addPropertyWithName:@"Error" andValue:[error domain] to:props];
+    [self addPropertyWithName:@"Error" andValue:[error localizedDescription] to:props];
 }
 
-- (void)addPropertyWithName:(NSString *)name andValue:(NSString *)value
+- (void)addPropertyWithName:(NSString *)name andValue:(NSString *)value to:(NSMutableArray *)props
 {
     // Remove new lines (crash when sorting)
     value = [value stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-    [self.imageProperties addObject:@{@"name": name, @"value": value}];
+    [props addObject:@{@"name": name, @"value": value}];
 }
 
 @end

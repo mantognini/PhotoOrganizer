@@ -10,6 +10,6 @@
 
 @interface NSArrayController (PO)
 
-- (void)removeAll;
+- (void)removeAllObjects;
 
 @end

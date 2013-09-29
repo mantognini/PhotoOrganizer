@@ -8,11 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface POAppDelegate : NSObject <NSApplicationDelegate>
+@interface POAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
-@property (strong) NSArray *imageUrls;
-@property (strong) NSDictionary *urlProperties; // <NSURL, NSDictionary<NSString, NSString>>
-@property (weak) IBOutlet NSArrayController *imageProperties; // NSDictionary<NSString, NSString>
+@property (unsafe_unretained) IBOutlet NSPanel *infoPanel;
+@property (strong) NSMutableArray *urls; // Array<NSURL>
+@property (weak) IBOutlet NSArrayController *imagesData; // ~Array~<{url, props}>
+// {props} is NSMutableArray{key, value}
+@property (weak) IBOutlet NSArrayController *currentImageData;
 
 @end
