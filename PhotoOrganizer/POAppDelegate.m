@@ -42,25 +42,45 @@
 
 - (void)loadProperties
 {
+    [self clearProperties];
+
     NSFileManager *fs = [NSFileManager defaultManager];
     NSError *error = nil;
     NSDictionary *props = [fs attributesOfItemAtPath:self.imageUrl.relativePath error:&error];
-    if (error) [self report:error];
+    if (error) return [self reportError:error];
     else [self displayProperties:props];
+
+    CGImageSourceRef source = CGImageSourceCreateWithURL((__bridge CFURLRef)self.imageUrl, NULL);
+    if (source) {
+        NSDictionary* props = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(source, 0, NULL));
+        [self displayProperties:props];
+        CFRelease(source);
+    } else return [self reportErrorMessage:@"Cannot open CFImageSource"];
 }
 
 - (void)displayProperties:(NSDictionary *)props
 {
-    [self clearProperties];
     [props enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        // Make sure to pass NSString!
-        [self addPropertyWithName:[key description] andValue:[obj description]];
+        if ([obj isKindOfClass:[NSDictionary class]]) [self displayProperties:obj withPrefixName:[key description]];
+        else [self addPropertyWithName:[key description] andValue:[obj description]]; // Make sure to pass NSString!
     }];
 }
 
-- (void)report:(NSError *)error
+- (void)displayProperties:(NSDictionary *)props withPrefixName:(NSString *)prefix
 {
-    [self clearProperties];
+    [props enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([obj isKindOfClass:[NSDictionary class]]) [self displayProperties:obj withPrefixName:[NSString stringWithFormat:@"%@.%@", prefix, key]];
+        else [self addPropertyWithName:[NSString stringWithFormat:@"%@.%@", prefix, key] andValue:[obj description]]; // Make sure to pass NSString!
+    }];
+}
+
+- (void)reportErrorMessage:(NSString *)error
+{
+    [self addPropertyWithName:@"Error" andValue:error];
+}
+
+- (void)reportError:(NSError *)error
+{
     [self addPropertyWithName:@"Error" andValue:[[NSNumber numberWithInteger:[error code]] stringValue]];
     [self addPropertyWithName:@"Error" andValue:[error domain]];
     [self addPropertyWithName:@"Error" andValue:[error localizedDescription]];
