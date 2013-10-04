@@ -80,7 +80,10 @@
     [self.currentImageData removeAllObjects];
     NSDictionary *selection = [self.imagesData.selectedObjects lastObject];
     [self.currentImageData addObjects:[selection objectForKey:@"props"]];
-    [self.currentImageData setSelectedObjects:nil]; // We don't want everything to be selected
+
+    // We don't want everything to be selected
+    [self.currentImageData setSelectedObjects:nil];
+    [self.commonProps setSelectedObjects:nil];
 }
 
 - (void)loadPropertiesForUrls:(NSArray *)urls
