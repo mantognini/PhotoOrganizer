@@ -691,14 +691,14 @@ DQ
                             <rect key="frame" x="1" y="17" width="438" height="261"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" headerView="qyI-39-Jc1" id="xmA-ZI-cB8">
-                                    <rect key="frame" x="0.0" y="0.0" width="505" height="261"/>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" headerView="qyI-39-Jc1" id="xmA-ZI-cB8">
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="261"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn editable="NO" width="435" minWidth="40" maxWidth="1000" id="gMr-7W-rii">
+                                        <tableColumn editable="NO" width="280" minWidth="40" maxWidth="1000" id="gMr-7W-rii">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="File">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -715,7 +715,7 @@ DQ
                                                 <binding destination="25b-sA-Bdf" name="value" keyPath="arrangedObjects.url.relativePath" id="7Bg-YB-8WZ"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="peA-aJ-yC3">
+                                        <tableColumn width="150" minWidth="10" maxWidth="3.4028234663852886e+38" id="peA-aJ-yC3">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Preview">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -726,7 +726,11 @@ DQ
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="previewName"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="25b-sA-Bdf" name="value" keyPath="arrangedObjects.previewName" id="Akl-7a-wQ7"/>
+                                            </connections>
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
@@ -736,7 +740,7 @@ DQ
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" id="SmH-W9-7hw">
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="SmH-W9-7hw">
                             <rect key="frame" x="1" y="262" width="438" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -745,7 +749,7 @@ DQ
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="qyI-39-Jc1">
-                            <rect key="frame" x="0.0" y="0.0" width="505" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="438" height="17"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
