@@ -16,6 +16,9 @@
 
     it.url = url;
     it.props = [NSMutableArray array];
+    it.dir = [url URLByDeletingLastPathComponent];
+    it.origName = [url lastPathComponent];
+    it.previewName = it.origName;
 
     // Ask the fs for basic file attributes
     NSFileManager *fs = [NSFileManager defaultManager];
@@ -33,23 +36,6 @@
     } else [it reportErrorMessage:@"Cannot open CFImageSource"];
 
     return it;
-}
-
-- (id)objectForKey:(NSString *)key
-{
-    if ([key isEqualToString:@"url"]) {
-        return self.url;
-    } else if ([key isEqualToString:@"props"]) {
-        return  self.props;
-    } else if ([key isEqualToString:@"dir"]) {
-        return  self.dir;
-    } else if ([key isEqualToString:@"origName"]) {
-        return  self.origName;
-    } else if ([key isEqualToString:@"previewName"]) {
-        return  self.previewName;
-    } else {
-        return nil;
-    }
 }
 
 - (void)addProperties:(NSDictionary *)inprops

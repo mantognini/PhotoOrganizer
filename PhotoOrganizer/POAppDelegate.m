@@ -79,8 +79,8 @@
 {
     // Populate info window with selected image props
     [self.currentImageData removeAllObjects];
-    NSDictionary *selection = [self.imagesData.selectedObjects lastObject];
-    [self.currentImageData addObjects:[selection objectForKey:@"props"]];
+    POImageData *selection = [self.imagesData.selectedObjects lastObject];
+    [self.currentImageData addObjects:selection.props];
 
     // We don't want everything to be selected
     [self.currentImageData setSelectedObjects:nil];

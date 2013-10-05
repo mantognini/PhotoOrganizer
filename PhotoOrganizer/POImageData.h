@@ -22,6 +22,4 @@
 
 + (id)imageDataForUrl:(NSURL *)url;
 
-- (id)objectForKey:(NSString *)key;
-
 @end
