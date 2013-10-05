@@ -19,6 +19,7 @@
 		0C3400FA17F81FCC002BC8BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C3400F817F81FCC002BC8BD /* InfoPlist.strings */; };
 		0C3400FC17F81FCC002BC8BD /* PhotoOrganizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3400FB17F81FCC002BC8BD /* PhotoOrganizerTests.m */; };
 		0C34010717F82A7C002BC8BD /* NSArrayController+PO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */; };
+		0CBB4B7618002F4900DBCB1B /* POImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB4B7518002F4900DBCB1B /* POImageData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		0C3400FB17F81FCC002BC8BD /* PhotoOrganizerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoOrganizerTests.m; sourceTree = "<group>"; };
 		0C34010517F82A7C002BC8BD /* NSArrayController+PO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArrayController+PO.h"; sourceTree = "<group>"; };
 		0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArrayController+PO.m"; sourceTree = "<group>"; };
+		0CBB4B7418002F4900DBCB1B /* POImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POImageData.h; sourceTree = "<group>"; };
+		0CBB4B7518002F4900DBCB1B /* POImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POImageData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,13 +121,15 @@
 		0C3400D717F81FCC002BC8BD /* PhotoOrganizer */ = {
 			isa = PBXGroup;
 			children = (
-				0C3400E317F81FCC002BC8BD /* POAppDelegate.h */,
-				0C3400E417F81FCC002BC8BD /* POAppDelegate.m */,
-				0C3400E617F81FCC002BC8BD /* MainMenu.xib */,
 				0C3400E917F81FCC002BC8BD /* Images.xcassets */,
-				0C3400D817F81FCC002BC8BD /* Supporting Files */,
+				0C3400E617F81FCC002BC8BD /* MainMenu.xib */,
 				0C34010517F82A7C002BC8BD /* NSArrayController+PO.h */,
 				0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */,
+				0C3400E317F81FCC002BC8BD /* POAppDelegate.h */,
+				0C3400E417F81FCC002BC8BD /* POAppDelegate.m */,
+				0CBB4B7418002F4900DBCB1B /* POImageData.h */,
+				0CBB4B7518002F4900DBCB1B /* POImageData.m */,
+				0C3400D817F81FCC002BC8BD /* Supporting Files */,
 			);
 			path = PhotoOrganizer;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CBB4B7618002F4900DBCB1B /* POImageData.m in Sources */,
 				0C3400DE17F81FCC002BC8BD /* main.m in Sources */,
 				0C34010717F82A7C002BC8BD /* NSArrayController+PO.m in Sources */,
 				0C3400E517F81FCC002BC8BD /* POAppDelegate.m in Sources */,
@@ -480,6 +486,7 @@
 				0C34010117F81FCC002BC8BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C34010217F81FCC002BC8BD /* Build configuration list for PBXNativeTarget "PhotoOrganizerTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +495,7 @@
 				0C34010417F81FCC002BC8BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

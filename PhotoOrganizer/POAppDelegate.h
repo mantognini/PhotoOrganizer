@@ -14,8 +14,7 @@
 @property (unsafe_unretained) IBOutlet NSPanel *commonPropsPanel;
 @property (unsafe_unretained) IBOutlet NSPanel *infoPanel;
 @property (strong) NSMutableArray *urls; // Array<NSURL>
-@property (weak) IBOutlet NSArrayController *imagesData; // ~Array~<{url, props}>
-// {props} is NSMutableArray{key, value}
+@property (weak) IBOutlet NSArrayController *imagesData; // ~Array~<ImageData>
 @property (weak) IBOutlet NSArrayController *currentImageData;
 @property (weak) IBOutlet NSArrayController *commonProps;
 @property (strong) NSMutableSet *commonPropsSet;
