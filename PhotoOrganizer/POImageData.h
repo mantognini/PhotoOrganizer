@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Quartz/Quartz.h>
 
 // Kind of dictionary with keys:
 // {url, props, dir, origName, previewName}
 // {props} is NSMutableArray{key, value}
 
-@interface POImageData : NSObject
+@interface POImageData : NSObject <QLPreviewItem>
 
 @property (strong) NSURL *url;
 @property (strong) NSMutableArray *props;

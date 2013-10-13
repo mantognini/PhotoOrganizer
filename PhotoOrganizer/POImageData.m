@@ -79,4 +79,12 @@
     [self.props addObject:@{@"name": name, @"value": value}];
 }
 
+
+/// QLPreviewItem protocol
+
+- (NSURL *)previewItemURL
+{
+    return self.url;
+}
+
 @end

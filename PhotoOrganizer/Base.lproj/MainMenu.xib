@@ -786,18 +786,39 @@ DQ
                             <action selector="props:" target="494" id="Qzr-t5-E9I"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xwg-LY-8P5">
+                        <rect key="frame" x="322" y="295" width="50" height="65"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="38" id="aRv-Ou-MMP"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSQuickLookTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="Y9t-7B-2TT">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+IA
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleQuickLook:" target="494" id="4Eu-xo-NFV"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="UJe-va-nX3" firstAttribute="trailing" secondItem="sR7-oI-e6F" secondAttribute="trailing" id="0E0-rY-WHu"/>
                     <constraint firstItem="oOY-66-2Tq" firstAttribute="centerX" secondItem="UJe-va-nX3" secondAttribute="centerX" constant="-35.5" id="1lq-3g-0Ip"/>
                     <constraint firstItem="oOY-66-2Tq" firstAttribute="baseline" secondItem="sR7-oI-e6F" secondAttribute="baseline" id="24L-uc-Kar"/>
                     <constraint firstAttribute="trailing" secondItem="sR7-oI-e6F" secondAttribute="trailing" constant="20" symbolic="YES" id="CuZ-XE-piF"/>
+                    <constraint firstItem="Xwg-LY-8P5" firstAttribute="centerY" secondItem="sR7-oI-e6F" secondAttribute="centerY" id="Iwr-sz-7kH"/>
                     <constraint firstAttribute="bottom" secondItem="UJe-va-nX3" secondAttribute="bottom" constant="20" symbolic="YES" id="KA9-hg-Dox"/>
                     <constraint firstItem="Tyb-1y-6Ls" firstAttribute="baseline" secondItem="oOY-66-2Tq" secondAttribute="baseline" id="Lcx-ln-RUd"/>
                     <constraint firstItem="UJe-va-nX3" firstAttribute="top" secondItem="zze-Vo-OdW" secondAttribute="bottom" constant="20" symbolic="YES" id="T5Q-mA-gjc"/>
                     <constraint firstItem="zze-Vo-OdW" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" symbolic="YES" id="UDZ-XL-5I0"/>
+                    <constraint firstItem="Xwg-LY-8P5" firstAttribute="centerY" secondItem="Tyb-1y-6Ls" secondAttribute="centerY" id="d0z-HJ-opv"/>
                     <constraint firstItem="Tyb-1y-6Ls" firstAttribute="leading" secondItem="oOY-66-2Tq" secondAttribute="trailing" constant="12" symbolic="YES" id="egq-NF-dtB"/>
                     <constraint firstItem="oOY-66-2Tq" firstAttribute="baseline" secondItem="zze-Vo-OdW" secondAttribute="baseline" id="fQm-vE-Bz1"/>
+                    <constraint firstItem="Xwg-LY-8P5" firstAttribute="leading" secondItem="Tyb-1y-6Ls" secondAttribute="trailing" constant="21" id="gov-hw-ECn"/>
+                    <constraint firstItem="UJe-va-nX3" firstAttribute="top" secondItem="Xwg-LY-8P5" secondAttribute="bottom" constant="3" id="guI-x3-r5V"/>
                     <constraint firstItem="UJe-va-nX3" firstAttribute="leading" secondItem="zze-Vo-OdW" secondAttribute="leading" id="s51-Le-WG0"/>
                     <constraint firstItem="sR7-oI-e6F" firstAttribute="top" secondItem="372" secondAttribute="top" constant="20" symbolic="YES" id="tPZ-oC-Df5"/>
                 </constraints>
@@ -975,4 +996,7 @@ DQ
         <customObject id="420" customClass="NSFontManager"/>
         <userDefaultsController representsSharedInstance="YES" id="fY7-78-Tv3"/>
     </objects>
+    <resources>
+        <image name="NSQuickLookTemplate" width="21" height="16"/>
+    </resources>
 </document>

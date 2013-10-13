@@ -19,6 +19,7 @@
 		0C3400FA17F81FCC002BC8BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C3400F817F81FCC002BC8BD /* InfoPlist.strings */; };
 		0C3400FC17F81FCC002BC8BD /* PhotoOrganizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3400FB17F81FCC002BC8BD /* PhotoOrganizerTests.m */; };
 		0C34010717F82A7C002BC8BD /* NSArrayController+PO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */; };
+		0C5607E8180AC30400EECE1A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5607E7180AC30400EECE1A /* Quartz.framework */; };
 		0CBB4B7618002F4900DBCB1B /* POImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB4B7518002F4900DBCB1B /* POImageData.m */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		0C3400FB17F81FCC002BC8BD /* PhotoOrganizerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoOrganizerTests.m; sourceTree = "<group>"; };
 		0C34010517F82A7C002BC8BD /* NSArrayController+PO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArrayController+PO.h"; sourceTree = "<group>"; };
 		0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArrayController+PO.m"; sourceTree = "<group>"; };
+		0C5607E5180AC25500EECE1A /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		0C5607E7180AC30400EECE1A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		0CBB4B7418002F4900DBCB1B /* POImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POImageData.h; sourceTree = "<group>"; };
 		0CBB4B7518002F4900DBCB1B /* POImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POImageData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C5607E8180AC30400EECE1A /* Quartz.framework in Frameworks */,
 				0C3400D217F81FCC002BC8BD /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +105,8 @@
 		0C3400D017F81FCC002BC8BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0C5607E7180AC30400EECE1A /* Quartz.framework */,
+				0C5607E5180AC25500EECE1A /* QuickLook.framework */,
 				0C3400D117F81FCC002BC8BD /* Cocoa.framework */,
 				0C3400F017F81FCC002BC8BD /* XCTest.framework */,
 				0C3400D317F81FCC002BC8BD /* Other Frameworks */,

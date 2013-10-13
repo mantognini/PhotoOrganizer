@@ -7,8 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Quartz/Quartz.h>
 
-@interface POAppDelegate : NSObject <NSApplicationDelegate, NSTableViewDelegate>
+@interface POAppDelegate : NSObject
+<
+    NSApplicationDelegate,
+    NSTableViewDelegate,
+    QLPreviewPanelDataSource
+>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (unsafe_unretained) IBOutlet NSPanel *commonPropsPanel;

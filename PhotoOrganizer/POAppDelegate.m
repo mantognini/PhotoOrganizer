@@ -120,4 +120,46 @@
     [self.commonProps addObjects:[self.commonPropsSet allObjects]];
 }
 
+- (IBAction)toggleQuickLook:(NSButton *)sender
+{
+    if ([QLPreviewPanel sharedPreviewPanelExists]
+        && [[QLPreviewPanel sharedPreviewPanel] isVisible]) {
+        [[QLPreviewPanel sharedPreviewPanel] orderOut:sender];
+    } else {
+        [[QLPreviewPanel sharedPreviewPanel] makeKeyAndOrderFront:sender];
+    }
+}
+
+- (NSArray *)arrangedImageData
+{
+    return self.imagesData.arrangedObjects;
+}
+
+- (NSInteger)numberOfPreviewItemsInPreviewPanel:(QLPreviewPanel *)panel
+{
+    return self.arrangedImageData.count;
+}
+
+- (id <QLPreviewItem>)previewPanel:(QLPreviewPanel *)panel previewItemAtIndex:(NSInteger)index
+{
+    return [self.arrangedImageData objectAtIndex:index];
+}
+
+- (BOOL)acceptsPreviewPanelControl:(QLPreviewPanel *)panel
+{
+    return YES;
+}
+
+- (void)beginPreviewPanelControl:(QLPreviewPanel *)panel
+{
+    panel.dataSource = self;
+    panel.currentPreviewItemIndex = self.imagesData.selectionIndex;
+}
+
+- (void)endPreviewPanelControl:(QLPreviewPanel *)panel
+{
+    // Update selection
+    self.imagesData.selectionIndex = panel.currentPreviewItemIndex;
+}
+
 @end
