@@ -113,7 +113,7 @@
     [self.imagesData.arrangedObjects enumerateObjectsUsingBlock:^(POImageData *obj, NSUInteger idx, BOOL *stop) {
         NSString *rawTime = [obj valueForProperty:self.timeProp];
         NSString *output = [self.timeFormatter format:rawTime];
-        NSLog(@"output for %@ is %@", rawTime, output);
+        obj.previewName = output != nil && ![output isEqualToString:@""] ? output : obj.origName;
     }];
 }
 
