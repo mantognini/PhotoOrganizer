@@ -21,7 +21,7 @@
         self.commonPropsSet = nil; // yup!
         self.timeFormatter = [[POTimeFormatter alloc] init];
         self.timeFormatter.inputFormat = @"yyyy:MM:dd HH:mm:ss";
-        self.timeFormatter.outputFormat = @"yyyy.MM.dd-HH:mm";
+        self.timeFormatter.outputFormat = @"yyyy.MM.dd-HH.mm.ss";
         self.timeProp = nil;
 
         // Register for format modification
