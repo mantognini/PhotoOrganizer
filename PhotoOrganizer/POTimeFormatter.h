@@ -11,10 +11,9 @@
 @interface POTimeFormatter : NSObject
 
 @property NSString *inputFormat;
-@property NSString *shiftFormat;
 @property NSString *outputFormat;
 
-@property NSString *shiftInput;
+@property NSNumber *shift; // seconds
 
 - (NSString *)format:(NSString *)input; // gives «output»
 
