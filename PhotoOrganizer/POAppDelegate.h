@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import <Quartz/Quartz.h>
 
+#import "POTimeFormatter.h"
+
 @interface POAppDelegate : NSObject
 <
     NSApplicationDelegate,
@@ -24,5 +26,8 @@
 @property (weak) IBOutlet NSArrayController *currentImageData;
 @property (weak) IBOutlet NSArrayController *commonProps;
 @property (strong) NSMutableSet *commonPropsSet;
+
+@property (strong) POTimeFormatter *timeFormatter;
+@property (strong) NSString *timeProp;
 
 @end

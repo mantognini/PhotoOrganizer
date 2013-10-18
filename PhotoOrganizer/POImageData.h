@@ -23,4 +23,6 @@
 
 + (id)imageDataForUrl:(NSURL *)url;
 
+- (NSString *)valueForProperty:(NSString *)key;
+
 @end

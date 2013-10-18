@@ -38,6 +38,19 @@
     return it;
 }
 
+- (NSString *)valueForProperty:(NSString *)key
+{
+    NSUInteger index = [self.props indexOfObjectPassingTest:^BOOL(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+        return [[obj objectForKey:@"name"] isEqualToString:key];
+    }];
+
+    if (index == NSNotFound) {
+        return nil;
+    } else {
+        return [[self.props objectAtIndex:index] objectForKey:@"value"];
+    }
+}
+
 - (void)addProperties:(NSDictionary *)inprops
 {
     // Load inprops{key, value} into props

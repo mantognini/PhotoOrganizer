@@ -19,6 +19,10 @@
         // Init own (strong) attributes
         self.urls = [NSMutableArray array];
         self.commonPropsSet = nil; // yup!
+        self.timeFormatter = [[POTimeFormatter alloc] init];
+        self.timeFormatter.inputFormat = @"yyyy:MM:dd HH:mm:ss";
+        self.timeFormatter.outputFormat = @"yyyy.MM.dd-HH:mm";
+        self.timeProp = nil;
     }
     return self;
 }
@@ -85,6 +89,16 @@
     // We don't want everything to be selected
     [self.currentImageData setSelectedObjects:nil];
     [self.commonProps setSelectedObjects:nil];
+}
+
+- (void)updatePreviewName
+{
+    // Find out the date of each picture
+    [self.imagesData.arrangedObjects enumerateObjectsUsingBlock:^(POImageData *obj, NSUInteger idx, BOOL *stop) {
+        NSString *rawTime = [obj valueForProperty:self.timeProp];
+        NSString *output = [self.timeFormatter format:rawTime];
+        NSLog(@"output for %@ is %@", rawTime, output);
+    }];
 }
 
 - (void)loadPropertiesForUrls:(NSArray *)urls
@@ -160,6 +174,21 @@
 {
     // Update selection
     self.imagesData.selectionIndex = panel.currentPreviewItemIndex;
+}
+
+- (IBAction)setTimeProperty:(id)sender
+{
+    if (self.commonProps.selectionIndex == NSNotFound) {
+        self.timeProp = nil;
+    } else {
+        self.timeProp = self.commonProps.selectedObjects.lastObject;
+        [self updatePreviewName];
+    }
+}
+
+- (IBAction)save:(id)sender
+{
+    NSLog(@"TOOD");
 }
 
 @end

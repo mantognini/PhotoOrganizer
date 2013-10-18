@@ -20,6 +20,7 @@
 		0C3400FC17F81FCC002BC8BD /* PhotoOrganizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3400FB17F81FCC002BC8BD /* PhotoOrganizerTests.m */; };
 		0C34010717F82A7C002BC8BD /* NSArrayController+PO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */; };
 		0C5607E8180AC30400EECE1A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C5607E7180AC30400EECE1A /* Quartz.framework */; };
+		0C9F15E51811266700BA8DB7 /* POTimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F15E41811266700BA8DB7 /* POTimeFormatter.m */; };
 		0CBB4B7618002F4900DBCB1B /* POImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB4B7518002F4900DBCB1B /* POImageData.m */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,8 @@
 		0C34010617F82A7C002BC8BD /* NSArrayController+PO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArrayController+PO.m"; sourceTree = "<group>"; };
 		0C5607E5180AC25500EECE1A /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		0C5607E7180AC30400EECE1A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		0C9F15E31811266700BA8DB7 /* POTimeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POTimeFormatter.h; sourceTree = "<group>"; };
+		0C9F15E41811266700BA8DB7 /* POTimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POTimeFormatter.m; sourceTree = "<group>"; };
 		0CBB4B7418002F4900DBCB1B /* POImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POImageData.h; sourceTree = "<group>"; };
 		0CBB4B7518002F4900DBCB1B /* POImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POImageData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +139,8 @@
 				0CBB4B7418002F4900DBCB1B /* POImageData.h */,
 				0CBB4B7518002F4900DBCB1B /* POImageData.m */,
 				0C3400D817F81FCC002BC8BD /* Supporting Files */,
+				0C9F15E31811266700BA8DB7 /* POTimeFormatter.h */,
+				0C9F15E41811266700BA8DB7 /* POTimeFormatter.m */,
 			);
 			path = PhotoOrganizer;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CBB4B7618002F4900DBCB1B /* POImageData.m in Sources */,
+				0C9F15E51811266700BA8DB7 /* POTimeFormatter.m in Sources */,
 				0C3400DE17F81FCC002BC8BD /* main.m in Sources */,
 				0C34010717F82A7C002BC8BD /* NSArrayController+PO.m in Sources */,
 				0C3400E517F81FCC002BC8BD /* POAppDelegate.m in Sources */,
