@@ -204,7 +204,23 @@
 
 - (IBAction)save:(id)sender
 {
-    NSLog(@"TOOD");
+    // Open a browser panel to select the output directory
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    [panel setFloatingPanel:YES];
+    [panel setCanChooseDirectories:YES];
+    [panel setCanChooseFiles:NO];
+    [panel setAllowsMultipleSelection:NO];
+    [panel setTitle:@"Select the output directory"];
+
+    // Browse
+	NSInteger i = [panel runModal];
+	if (i == NSOKButton) {
+        // Copy each files to the destination
+        NSURL *output = [[panel URLs] lastObject];
+        [self.imagesData.arrangedObjects enumerateObjectsUsingBlock:^(POImageData *obj, NSUInteger idx, BOOL *stop) {
+            [self copy:obj.url to:output withName:obj.previewName];
+        }];
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
@@ -212,6 +228,20 @@
 {
     // We only observe our formatter so...
     [self updatePreviewName];
+}
+
+- (void)copy:(NSURL *)file to:(NSURL *)directory withName:(NSString *)name
+{
+    NSURL *destination = [[directory URLByAppendingPathComponent:name] URLByAppendingPathExtension:[file pathExtension]];
+
+    NSError *error = nil;
+    NSFileManager *fs = [NSFileManager defaultManager];
+    [fs copyItemAtURL:file toURL:destination error:&error];
+
+    if (error != nil) {
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert runModal];
+    }
 }
 
 @end

@@ -138,9 +138,9 @@
 				0C3400E417F81FCC002BC8BD /* POAppDelegate.m */,
 				0CBB4B7418002F4900DBCB1B /* POImageData.h */,
 				0CBB4B7518002F4900DBCB1B /* POImageData.m */,
-				0C3400D817F81FCC002BC8BD /* Supporting Files */,
 				0C9F15E31811266700BA8DB7 /* POTimeFormatter.h */,
 				0C9F15E41811266700BA8DB7 /* POTimeFormatter.m */,
+				0C3400D817F81FCC002BC8BD /* Supporting Files */,
 			);
 			path = PhotoOrganizer;
 			sourceTree = "<group>";
