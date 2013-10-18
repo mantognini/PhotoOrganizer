@@ -74,8 +74,8 @@
                                  (__bridge NSString *)kUTTypeMovie]];
 
     // Browse
-	NSInteger i = [panel runModal];
-	if (i == NSOKButton) {
+    NSInteger i = [panel runModal];
+    if (i == NSOKButton) {
         // Load props & update info window
         [self loadPropertiesForUrls:[panel URLs]];
         [self updateInfo];
@@ -232,8 +232,8 @@
     [panel setTitle:@"Select the output directory"];
 
     // Browse
-	NSInteger i = [panel runModal];
-	if (i == NSOKButton) {
+    NSInteger i = [panel runModal];
+    if (i == NSOKButton) {
         // Copy each files to the destination
         NSURL *output = [[panel URLs] lastObject];
         [self.imagesData.arrangedObjects enumerateObjectsUsingBlock:^(POImageData *obj, NSUInteger idx, BOOL *stop) {
