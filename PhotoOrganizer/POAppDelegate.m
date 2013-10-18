@@ -23,8 +23,24 @@
         self.timeFormatter.inputFormat = @"yyyy:MM:dd HH:mm:ss";
         self.timeFormatter.outputFormat = @"yyyy.MM.dd-HH:mm";
         self.timeProp = nil;
+
+        // Register for format modification
+        [self.timeFormatter addObserver:self forKeyPath:@"inputFormat"
+                                options:NSKeyValueObservingOptionNew context:NULL];
+        [self.timeFormatter addObserver:self forKeyPath:@"outputFormat"
+                                options:NSKeyValueObservingOptionNew context:NULL];
+        [self.timeFormatter addObserver:self forKeyPath:@"shift"
+                                options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    // Unregister observer
+    [self.timeFormatter removeObserver:self forKeyPath:@"shift"];
+    [self.timeFormatter removeObserver:self forKeyPath:@"outputFormat"];
+    [self.timeFormatter removeObserver:self forKeyPath:@"inputFormat"];
 }
 
 - (IBAction)browse:(id)sender
@@ -189,6 +205,13 @@
 - (IBAction)save:(id)sender
 {
     NSLog(@"TOOD");
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+                        change:(NSDictionary *)change context:(void *)context
+{
+    // We only observe our formatter so...
+    [self updatePreviewName];
 }
 
 @end
