@@ -49,6 +49,8 @@
                                 options:NSKeyValueObservingOptionNew context:NULL];
         [self.timeFormatter addObserver:self forKeyPath:@"shift"
                                 options:NSKeyValueObservingOptionNew context:NULL];
+
+        self.processing = NO;
     }
     return self;
 }
@@ -221,6 +223,18 @@
     }
 }
 
+// This selector is run in a worker thread
+- (void)copyImagesTo:(NSURL *)output
+{
+    [self.imagesData.arrangedObjects enumerateObjectsUsingBlock:^(POImageData *obj, NSUInteger idx, BOOL *stop) {
+        [self copy:obj.url to:output withName:obj.previewName];
+        [self.progressBar incrementBy:1.0];
+    }];
+    [self.progressBar performSelectorOnMainThread:@selector(stopAnimation:) withObject:self
+                                    waitUntilDone:YES];
+    self.processing = NO;
+}
+
 - (IBAction)save:(id)sender
 {
     // Open a browser panel to select the output directory
@@ -236,9 +250,11 @@
     if (i == NSOKButton) {
         // Copy each files to the destination
         NSURL *output = [[panel URLs] lastObject];
-        [self.imagesData.arrangedObjects enumerateObjectsUsingBlock:^(POImageData *obj, NSUInteger idx, BOOL *stop) {
-            [self copy:obj.url to:output withName:obj.previewName];
-        }];
+        self.processing = YES;
+        [self.progressBar setMinValue:0.0];
+        [self.progressBar setMaxValue:[self.imagesData.arrangedObjects count]];
+        [self.progressBar startAnimation:self];
+        [self performSelectorInBackground:@selector(copyImagesTo:) withObject:output];
     }
 }
 

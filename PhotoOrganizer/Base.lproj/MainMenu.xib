@@ -21,6 +21,7 @@
                 <outlet property="imagePaths" destination="25b-sA-Bdf" id="FhA-fe-o6o"/>
                 <outlet property="imagesData" destination="25b-sA-Bdf" id="M5I-DH-rub"/>
                 <outlet property="infoPanel" destination="EeT-5l-KTZ" id="5dy-N3-uDb"/>
+                <outlet property="progressBar" destination="G74-D2-7Dr" id="XJT-bq-NIg"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
         </customObject>
@@ -683,6 +684,11 @@ DQ
                         </buttonCell>
                         <connections>
                             <action selector="browse:" target="494" id="SsC-ns-9nB"/>
+                            <binding destination="494" name="enabled" keyPath="self.processing" id="Z4h-lW-eri">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </button>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJe-va-nX3">
@@ -763,6 +769,11 @@ DQ
                         </buttonCell>
                         <connections>
                             <action selector="clear:" target="494" id="446-57-mNz"/>
+                            <binding destination="494" name="enabled" keyPath="self.processing" id="3W8-hT-jUA">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-66-2Tq">
@@ -993,6 +1004,11 @@ IA
                         </buttonCell>
                         <connections>
                             <action selector="setTimeProperty:" target="494" id="QJv-Bv-zQ5"/>
+                            <binding destination="494" name="enabled" keyPath="self.processing" id="5PU-Dc-LsL">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </button>
                     <textField toolTip="input time format" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SU1-r1-oEH">
@@ -1049,6 +1065,11 @@ IA
                         </buttonCell>
                         <connections>
                             <action selector="save:" target="494" id="4fo-Wz-LGT"/>
+                            <binding destination="494" name="enabled" keyPath="self.processing" id="VRp-I5-1Er">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eXr-KV-8Cc">
@@ -1079,8 +1100,14 @@ IA
                             <binding destination="494" name="value" keyPath="self.timeFormatter.shift" id="Bk2-YN-ll8"/>
                         </connections>
                     </textField>
+                    <progressIndicator focusRingType="none" maxValue="100" displayedWhenStopped="NO" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="G74-D2-7Dr">
+                        <rect key="frame" x="185" y="19" width="247" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </progressIndicator>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="G74-D2-7Dr" firstAttribute="leading" secondItem="l94-MM-m86" secondAttribute="trailing" constant="8" symbolic="YES" id="0O6-r1-RUp"/>
+                    <constraint firstItem="G74-D2-7Dr" firstAttribute="centerY" secondItem="z9e-GP-Hrp" secondAttribute="centerY" id="77Q-nU-zkO"/>
                     <constraint firstItem="z9e-GP-Hrp" firstAttribute="trailing" secondItem="zWU-na-kbr" secondAttribute="trailing" id="88G-xe-Pwu"/>
                     <constraint firstItem="zWU-na-kbr" firstAttribute="leading" secondItem="zia-0b-PRF" secondAttribute="trailing" constant="8" symbolic="YES" id="9Ok-kB-07Q"/>
                     <constraint firstItem="VhR-g4-r3a" firstAttribute="leading" secondItem="l94-MM-m86" secondAttribute="leading" id="CfM-53-gi1"/>
@@ -1098,6 +1125,8 @@ IA
                     <constraint firstAttribute="bottom" secondItem="zWU-na-kbr" secondAttribute="bottom" constant="49" id="gJb-Vb-d6F"/>
                     <constraint firstItem="oeY-UK-Kmu" firstAttribute="top" secondItem="SU1-r1-oEH" secondAttribute="bottom" constant="9" id="oIS-Lo-tvc"/>
                     <constraint firstItem="SU1-r1-oEH" firstAttribute="trailing" secondItem="VhR-g4-r3a" secondAttribute="trailing" id="qAB-9q-lqj"/>
+                    <constraint firstItem="G74-D2-7Dr" firstAttribute="bottom" secondItem="z9e-GP-Hrp" secondAttribute="bottom" id="r6E-go-Bar"/>
+                    <constraint firstItem="z9e-GP-Hrp" firstAttribute="leading" secondItem="G74-D2-7Dr" secondAttribute="trailing" constant="8" symbolic="YES" id="sCX-sD-Vpp"/>
                     <constraint firstItem="md2-m8-lpV" firstAttribute="baseline" secondItem="oeY-UK-Kmu" secondAttribute="baseline" id="sV7-qf-108"/>
                     <constraint firstItem="oeY-UK-Kmu" firstAttribute="leading" secondItem="SU1-r1-oEH" secondAttribute="leading" id="spW-dX-9VD"/>
                     <constraint firstItem="l94-MM-m86" firstAttribute="top" secondItem="VhR-g4-r3a" secondAttribute="bottom" constant="100" id="tD3-wg-fL4"/>
