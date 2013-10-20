@@ -72,8 +72,7 @@
     [panel setCanChooseFiles:YES];
     [panel setAllowsMultipleSelection:YES];
     [panel setTitle:@"Select some Images"];
-    [panel setAllowedFileTypes:@[(__bridge NSString *)kUTTypeImage,
-                                 (__bridge NSString *)kUTTypeMovie]];
+    [panel setAllowedFileTypes:@[(__bridge NSString *)kUTTypeImage]];
 
     // Browse
     NSInteger i = [panel runModal];
