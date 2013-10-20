@@ -223,16 +223,42 @@
     }
 }
 
+// Run on main thread
+- (void)preCopyImage
+{
+    self.processing = YES;
+    [self.progressBar setMinValue:0.0];
+    [self.progressBar setMaxValue:[self.imagesData.arrangedObjects count]];
+    [self.progressBar setDoubleValue:0.0];
+    [self.progressBar startAnimation:self];
+}
+
+// Run on main thread
+- (void)postCopyImage:(NSError *)error
+{
+    if (error != nil) {
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert runModal];
+    }
+    
+    [self.progressBar stopAnimation:self];
+    [self.progressBar setDoubleValue:0.0];
+    self.processing = NO;
+}
+
 // This selector is run in a worker thread
 - (void)copyImagesTo:(NSURL *)output
 {
+    [self performSelectorOnMainThread:@selector(preCopyImage) withObject:nil waitUntilDone:YES];
+
+    __block NSError *error = nil;
     [self.imagesData.arrangedObjects enumerateObjectsUsingBlock:^(POImageData *obj, NSUInteger idx, BOOL *stop) {
-        [self copy:obj.url to:output withName:obj.previewName];
+        error = [self copy:obj.url to:output withName:obj.previewName];
+        *stop = error != nil;
         [self.progressBar incrementBy:1.0];
     }];
-    [self.progressBar performSelectorOnMainThread:@selector(stopAnimation:) withObject:self
-                                    waitUntilDone:YES];
-    self.processing = NO;
+
+    [self performSelectorOnMainThread:@selector(postCopyImage:) withObject:error waitUntilDone:YES];
 }
 
 - (IBAction)save:(id)sender
@@ -250,10 +276,6 @@
     if (i == NSOKButton) {
         // Copy each files to the destination
         NSURL *output = [[panel URLs] lastObject];
-        self.processing = YES;
-        [self.progressBar setMinValue:0.0];
-        [self.progressBar setMaxValue:[self.imagesData.arrangedObjects count]];
-        [self.progressBar startAnimation:self];
         [self performSelectorInBackground:@selector(copyImagesTo:) withObject:output];
     }
 }
@@ -265,7 +287,7 @@
     [self updatePreviewName];
 }
 
-- (void)copy:(NSURL *)file to:(NSURL *)directory withName:(NSString *)name
+- (NSError *)copy:(NSURL *)file to:(NSURL *)directory withName:(NSString *)name
 {
     NSURL *destination = [[directory URLByAppendingPathComponent:name] URLByAppendingPathExtension:[file pathExtension]];
 
@@ -273,10 +295,7 @@
     NSFileManager *fs = [NSFileManager defaultManager];
     [fs copyItemAtURL:file toURL:destination error:&error];
 
-    if (error != nil) {
-        NSAlert *alert = [NSAlert alertWithError:error];
-        [alert runModal];
-    }
+    return error;
 }
 
 @end

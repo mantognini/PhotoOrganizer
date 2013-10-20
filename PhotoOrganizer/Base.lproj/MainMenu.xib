@@ -722,7 +722,7 @@ DQ
                                                 <binding destination="25b-sA-Bdf" name="value" keyPath="arrangedObjects.url.relativePath" id="7Bg-YB-8WZ"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="150" minWidth="10" maxWidth="3.4028234663852886e+38" id="peA-aJ-yC3">
+                                        <tableColumn editable="NO" width="150" minWidth="10" maxWidth="3.4028234663852886e+38" id="peA-aJ-yC3">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Preview">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1100,7 +1100,7 @@ IA
                             <binding destination="494" name="value" keyPath="self.timeFormatter.shift" id="Bk2-YN-ll8"/>
                         </connections>
                     </textField>
-                    <progressIndicator focusRingType="none" maxValue="100" displayedWhenStopped="NO" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="G74-D2-7Dr">
+                    <progressIndicator focusRingType="none" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="G74-D2-7Dr">
                         <rect key="frame" x="185" y="19" width="247" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </progressIndicator>
